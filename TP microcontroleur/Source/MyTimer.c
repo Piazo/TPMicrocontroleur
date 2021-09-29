@@ -48,4 +48,90 @@ void TIM4_IRQHandler(void){
 	if (pFunc != 0) (*pFunc)();
 	TIM4 -> SR &= ~(1<<0);
 }
- 
+
+/* Timer PWM Configuration */
+void MyTimer_PWM(TIM_TypeDef * Timer, char Channel) {
+	switch (Channel) {
+		case 1:
+			Timer->CCMR1 &= ~(0x01<<0); // Sets the Channel as Output (should already be default configuration)
+			Timer->CCMR1 &= ~(0x7<<4);
+			Timer->CCMR1 |= (0x01<<5) | (0x01<<6); // Sets 110 (mode 1) for the Channel 1
+			Timer->CCMR1 |= (0x01<<3); // Enables the Channel's Preload Register
+			
+			if (Timer == TIM1) { // Special configuration for Timer 1
+				Timer->BDTR |= (0x01<<15); // Sets the MOE bit (Main Output Enable)
+				Timer->CCER |= (0x01<<2); // Sets the CC1NE : OC1N signal is output
+			}
+	
+			break;
+		
+		case 2:
+			Timer->CCMR1 &= ~(0x01<<8);
+			Timer->CCMR1 &= ~(0x7<<12);
+			Timer->CCMR1 |= (0x01<<13) | (0x01<<14);
+			Timer->CCMR1 |= (0x01<<11);
+			Timer->CCMR1 |= (0x01<<3);
+		
+		if (Timer == TIM1) { // Special configuration for Timer 1
+				Timer->BDTR |= (0x01<<15); // Sets the MOE bit (Main Output Enable)
+				Timer->CCER |= (0x01<<2); // Sets the CC1NE : OC1N signal is output
+			}
+		
+			break;
+		
+		case 3:
+			Timer->CCMR1 &= ~(0x01<<0);
+			Timer->CCMR1 &= ~(0x7<<4);
+			Timer->CCMR1 |= (0x01<<5) | (0x01<<6);
+		
+		if (Timer == TIM1) { // Special configuration for Timer 1
+				Timer->BDTR |= (0x01<<15); // Sets the MOE bit (Main Output Enable)
+				Timer->CCER |= (0x01<<2); // Sets the CC1NE : OC1N signal is output
+			}
+			break;
+		
+		case 4:
+			Timer->CCMR2 &= ~(0x01<<8);
+			Timer->CCMR2 &= ~(0x7<<12);
+			Timer->CCMR2 |= (0x01<<13) | (0x01<<14);
+			Timer->CCMR2 |= (0x01<<11);
+		
+		if (Timer == TIM1) { // Special configuration for Timer 1
+				Timer->BDTR |= (0x01<<15); // Sets the MOE bit (Main Output Enable)
+				Timer->CCER |= (0x01<<2); // Sets the CC1NE : OC1N signal is output
+			}
+			break;
+	}
+	Timer->EGR |= (0x01<<0); // Initializes all registers by setting UG
+}
+
+
+/* Timer PWM Start */
+void MyTimer_PWM_StartPWM(TIM_TypeDef * Timer, char Channel, unsigned short Arr, unsigned short Psc ) {
+	MyTimer_Base_Init (Timer,Arr,Psc);
+	MyTimer_Base_Start (Timer);
+}
+
+/* Sets the duty cycle of PWM */
+void MyTimer_PWM_SetDC(TIM_TypeDef * Timer, char Channel, unsigned short dc) {
+	unsigned short arr = Timer->ARR;
+	
+	unsigned short compareval = (dc/100) * arr;
+	switch (Channel) {
+		case 1:
+			Timer->CCR1 = compareval;
+			break;
+		
+		case 2:
+			Timer->CCR2 = compareval;
+			break;
+		
+		case 3:
+			Timer->CCR3 = compareval;
+			break;
+		
+		case 4:
+			Timer->CCR4 = compareval;
+			break;
+	}
+}

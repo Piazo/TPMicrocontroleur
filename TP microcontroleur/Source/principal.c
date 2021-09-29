@@ -20,7 +20,10 @@ int main(void){
 	MyTimer_Base_Init (TIM1,36000,1000);
 	MyTimer_Base_Start (TIM1);
 	MyTimer_ActiveIT(TIM1, 1, CallBack);
-
+	
+	/* Tests of PWM */
+	MyTimer_PWM(TIM2, 2);
+	MyTimer_PWM_StartPWM(TIM2, 2, 
 	
 	while(1) {
 		//if (GPIOC->IDR[]){
