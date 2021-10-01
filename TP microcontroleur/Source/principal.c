@@ -23,7 +23,7 @@ int main(void){
 	
 	/* Tests of PWM */
 	MyTimer_PWM(TIM2, 2);
-	MyTimer_PWM_StartPWM(TIM2, 2, 
+	MyTimer_PWM_StartPWM(TIM2, 2, 36000, 1000);
 	
 	while(1) {
 		//if (GPIOC->IDR[]){
