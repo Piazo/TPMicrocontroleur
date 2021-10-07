@@ -57,7 +57,8 @@ void MyTimer_PWM(TIM_TypeDef * Timer, char Channel) {
 			Timer->CCMR1 &= ~(0x7<<4);
 			Timer->CCMR1 |= (0x01<<5) | (0x01<<6); // Sets 110 (mode 1) for the Channel 1
 			Timer->CCMR1 |= (0x01<<3); // Enables the Channel's Preload Register
-			
+			Timer->CR1 |= (1<<7); // Sets the ARP bit
+
 			Timer->CCER |= (0x01<<0); // Sets the CC1NE : OC1N signal is output
 		
 			if (Timer == TIM1) { // Special configuration for Timer 1
@@ -113,8 +114,7 @@ void MyTimer_PWM(TIM_TypeDef * Timer, char Channel) {
 
 
 /* Timer PWM Start */
-void MyTimer_PWM_StartPWM(TIM_TypeDef * Timer, char Channel, unsigned short Arr, unsigned short Psc ) {
-	MyTimer_Base_Init (Timer,Arr,Psc);
+void MyTimer_PWM_StartPWM(TIM_TypeDef * Timer) {
 	MyTimer_Base_Start (Timer);
 }
 
