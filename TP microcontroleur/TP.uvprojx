@@ -398,6 +398,21 @@
               <FileType>1</FileType>
               <FilePath>.\Source\MyTimer.c</FilePath>
             </File>
+            <File>
+              <FileName>Driver_GPIO.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Source\Driver_GPIO.c</FilePath>
+            </File>
+            <File>
+              <FileName>Driver_GPIO.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Source\Driver_GPIO.h</FilePath>
+            </File>
+            <File>
+              <FileName>MyTimer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Source\MyTimer.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -799,6 +814,21 @@
               <FileName>MyTimer.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Source\MyTimer.c</FilePath>
+            </File>
+            <File>
+              <FileName>Driver_GPIO.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Source\Driver_GPIO.c</FilePath>
+            </File>
+            <File>
+              <FileName>Driver_GPIO.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Source\Driver_GPIO.h</FilePath>
+            </File>
+            <File>
+              <FileName>MyTimer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Source\MyTimer.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -3,7 +3,7 @@
 #include "Driver_GPIO.h"
 
 void CallBack(){
-	My_GPIO_Toggle(GPIOC, 13);
+	My_GPIO_Toggle(GPIOC, 10);
 }
 
 
@@ -12,18 +12,19 @@ void CallBack(){
 int main(void){
 	
 	/* Initialization of GPIOC 13 as Ouput OpenDrain */
-	MyGPIO_Struct gp = {GPIOC, 13, Out_OD};
+	MyGPIO_Struct gp = {GPIOA, 0, AltOut_Ppull};
 	MyGPIO_Init(&gp);
 	
 	
-	/* Initialization of Timer1 with period 500ms invoking function Callback */
+	/* Initialization of Timer1 with period 500ms invoking function Callback /
 	MyTimer_Base_Init (TIM1,36000,1000);
 	MyTimer_Base_Start (TIM1);
-	MyTimer_ActiveIT(TIM1, 1, CallBack);
+	MyTimer_ActiveIT(TIM1, 1, CallBack);*/
 	
 	/* Tests of PWM */
-	MyTimer_PWM(TIM2, 2);
-	MyTimer_PWM_StartPWM(TIM2, 2, 36000, 1000);
+	MyTimer_PWM(TIM2, 1);
+	MyTimer_PWM_StartPWM(TIM2, 1, 36000, 1000);
+	MyTimer_PWM_SetDC(TIM2, 1, 40);
 	
 	while(1) {
 		//if (GPIOC->IDR[]){

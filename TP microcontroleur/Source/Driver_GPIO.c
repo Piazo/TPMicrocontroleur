@@ -16,20 +16,11 @@ void MyGPIO_Init(MyGPIO_Struct * GPIOStructPtr) {
 		GPIOStructPtr->GPIO->CRH &= ~(0xF << ((GPIO_Pin - 8)*4)); // Resets the 4 control bits corresponding to the pin
 		GPIOStructPtr->GPIO->CRH |= (GPIO_Conf << ((GPIO_Pin - 8)*4)); // Sets the mask
 	}
-	
-	// #TODO Check if the chosen bit is the right one
-	if(GPIO_Conf == In_PullDown) {
-			//GPIOStructPtr->GPIO->ODR &= ~(1<<) // Set the bit corresponding to the Pin in ODR
-	}
-	
-	if(GPIO_Conf == In_PullUp) {
-		//GPIOStructPtr->GPIO->ODR |= (1<<) // Set the bit corresponding to the Pin in ODR
-	}
 }
 
 // #TODO Check the bits in reading / writing
 int MyGPIO_Read(GPIO_TypeDef * GPIO, char GPIO_PIN) {
-	return (GPIO->ODR << GPIO_PIN);
+	return (GPIO->IDR << GPIO_PIN);
 }
 
 
@@ -44,7 +35,7 @@ void My_GPIO_Reset(GPIO_TypeDef * GPIO, char GPIO_PIN) {
 
 
 void My_GPIO_Toggle(GPIO_TypeDef * GPIO, char GPIO_PIN) {
-	if(MyGPIO_Read(GPIO, GPIO_PIN)) My_GPIO_Reset(GPIO, GPIO_PIN); // If Pin is Set, Reset
+	if(GPIO->ODR << GPIO_PIN) My_GPIO_Reset(GPIO, GPIO_PIN); // If Pin is Set, Reset
 	else My_GPIO_Set(GPIO, GPIO_PIN); // If Pin isn't Set, Set
 }
 

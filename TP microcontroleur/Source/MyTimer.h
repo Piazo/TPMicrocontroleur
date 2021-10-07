@@ -19,7 +19,7 @@ void MyTimer_PWM(TIM_TypeDef * Timer, char Channel);
 
 void MyTimer_PWM_StartPWM(TIM_TypeDef * Timer, char Channel, unsigned short Arr, unsigned short Psc );
 
-void MyTimer_PWM_SetCyclicDuty(TIM_TypeDef * Timer, char Channel);
+void MyTimer_PWM_SetDC(TIM_TypeDef * Timer, char Channel, unsigned short dc);
 
 
 #endif

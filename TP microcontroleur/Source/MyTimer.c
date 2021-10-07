@@ -58,9 +58,10 @@ void MyTimer_PWM(TIM_TypeDef * Timer, char Channel) {
 			Timer->CCMR1 |= (0x01<<5) | (0x01<<6); // Sets 110 (mode 1) for the Channel 1
 			Timer->CCMR1 |= (0x01<<3); // Enables the Channel's Preload Register
 			
+			Timer->CCER |= (0x01<<0); // Sets the CC1NE : OC1N signal is output
+		
 			if (Timer == TIM1) { // Special configuration for Timer 1
 				Timer->BDTR |= (0x01<<15); // Sets the MOE bit (Main Output Enable)
-				Timer->CCER |= (0x01<<2); // Sets the CC1NE : OC1N signal is output
 			}
 	
 			break;
@@ -72,9 +73,11 @@ void MyTimer_PWM(TIM_TypeDef * Timer, char Channel) {
 			Timer->CCMR1 |= (0x01<<11);
 			Timer->CCMR1 |= (0x01<<3);
 		
+			Timer->CCER |= (0x01<<4); // Sets the CC1NE : OC1N signal is output
+		
 		if (Timer == TIM1) { // Special configuration for Timer 1
 				Timer->BDTR |= (0x01<<15); // Sets the MOE bit (Main Output Enable)
-				Timer->CCER |= (0x01<<2); // Sets the CC1NE : OC1N signal is output
+				
 			}
 		
 			break;
@@ -84,9 +87,10 @@ void MyTimer_PWM(TIM_TypeDef * Timer, char Channel) {
 			Timer->CCMR1 &= ~(0x7<<4);
 			Timer->CCMR1 |= (0x01<<5) | (0x01<<6);
 		
+			Timer->CCER |= (0x01<<8); // Sets the CC1NE : OC1N signal is output
+		
 		if (Timer == TIM1) { // Special configuration for Timer 1
 				Timer->BDTR |= (0x01<<15); // Sets the MOE bit (Main Output Enable)
-				Timer->CCER |= (0x01<<2); // Sets the CC1NE : OC1N signal is output
 			}
 			break;
 		
@@ -96,9 +100,11 @@ void MyTimer_PWM(TIM_TypeDef * Timer, char Channel) {
 			Timer->CCMR2 |= (0x01<<13) | (0x01<<14);
 			Timer->CCMR2 |= (0x01<<11);
 		
+			Timer->CCER |= (0x01<<12); // Sets the CC1NE : OC1N signal is output
+		
 		if (Timer == TIM1) { // Special configuration for Timer 1
 				Timer->BDTR |= (0x01<<15); // Sets the MOE bit (Main Output Enable)
-				Timer->CCER |= (0x01<<2); // Sets the CC1NE : OC1N signal is output
+				
 			}
 			break;
 	}
@@ -116,7 +122,7 @@ void MyTimer_PWM_StartPWM(TIM_TypeDef * Timer, char Channel, unsigned short Arr,
 void MyTimer_PWM_SetDC(TIM_TypeDef * Timer, char Channel, unsigned short dc) {
 	unsigned short arr = Timer->ARR;
 	
-	unsigned short compareval = (dc/100) * arr;
+	unsigned short compareval = (dc* arr) / 100;
 	switch (Channel) {
 		case 1:
 			Timer->CCR1 = compareval;
