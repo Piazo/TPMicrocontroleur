@@ -17,3 +17,32 @@ TP microcontroleur/Objects/TP1_Reel.htm
 TP microcontroleur/TP.uvguix.hugom
 TP microcontroleur/TP.uvoptx
 TP microcontroleur/TP.uvprojx
+.vscode/c_cpp_properties.json
+.vscode/extensions.json
+.vscode/settings.json
+TP microcontroleur/Listings/startup_stm32f10x_md.lst
+TP microcontroleur/Listings/TP_simule.map
+TP microcontroleur/Listings/TP1_Reel.map
+TP microcontroleur/Objects/adc.crf
+TP microcontroleur/Objects/adc.d
+TP microcontroleur/Objects/adc.o
+TP microcontroleur/Objects/driver_gpio.crf
+TP microcontroleur/Objects/driver_gpio.d
+TP microcontroleur/Objects/driver_gpio.o
+TP microcontroleur/Objects/ExtDll.iex
+TP microcontroleur/Objects/myadc.crf
+TP microcontroleur/Objects/myadc.d
+TP microcontroleur/Objects/myadc.o
+TP microcontroleur/Objects/principal_1.crf
+TP microcontroleur/Objects/principal_1.d
+TP microcontroleur/Objects/principal_1.o
+TP microcontroleur/Objects/startup_stm32f10x_md.d
+TP microcontroleur/Objects/TP_Reel.dep
+TP microcontroleur/Objects/TP_simule.axf
+TP microcontroleur/Objects/TP_simule.build_log.htm
+TP microcontroleur/Objects/TP_Simulé.dep
+TP microcontroleur/Objects/TP_simule.htm
+TP microcontroleur/Objects/TP_simule.lnp
+TP microcontroleur/Objects/TP1_Reel.lnp
+TP microcontroleur/TP.uvoptx
+TP microcontroleur/TP.uvprojx
