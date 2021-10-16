@@ -291,3 +291,5 @@ TP microcontroleur/TP.uvguix.alaverdo
 TP microcontroleur/Listings/projetMicrocontrolleur.map
 TP microcontroleur/DebugConfig/Reel_STM32F103RB_1.0.0.dbgconf
 TP microcontroleur/DebugConfig/Simul__STM32F103RB_1.0.0.dbgconf
+/TP microcontroleur/RTE
+/TP microcontroleur/DebugConfig
