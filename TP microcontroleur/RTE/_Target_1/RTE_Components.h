@@ -3,7 +3,7 @@
  * Auto generated Run-Time-Environment Configuration File
  *      *** Do not modify ! ***
  *
- * Project: 'TP' 
+ * Project: 'projetMicrocontrolleur' 
  * Target:  'Target 1' 
  */
 
